@@ -95,21 +95,10 @@ async function getLocation(address) {
     fetch(`http://open.mapquestapi.com/geocoding/v1/address?key=i52Qc0J9YBIq7M8UkGGMjCvUccA8C18F&location=${address}`).then(errorCheck).then(function (res) {
         let results = [];
         loadSpots.forEach(function (e) {
-            console.log(res.results[0].locations[0].latLng.lat);
-            console.log(res.results[0].locations[0].latLng.lng);
-            console.log(e[0]);
-            console.log(e[1]);
-            console.log(e[0] - 0.020641);
-            console.log(e[1] - 0.020641);
-            console.log(measure(res.results[0].locations[0].latLng.lat, res.results[0].locations[0].latLng.lng, e[0], e[1]));
-
-
             if (measure(res.results[0].locations[0].latLng.lat, res.results[0].locations[0].latLng.lng, e[0], e[1]) <= 10000) {
                 results.push(e);
             }
         });
-
-        console.log(results);
         searchedSpotsWithinRange = results;
         postAndRedirect('/spotResults', {results: results});
     }).catch(catchError);
