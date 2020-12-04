@@ -92,7 +92,7 @@ function catchError(err) {
 }
 
 async function getLocation(address) {
-    fetch(`http://open.mapquestapi.com/geocoding/v1/address?key=i52Qc0J9YBIq7M8UkGGMjCvUccA8C18F&location=${address}`).then(errorCheck).then(function (res) {
+    fetch(`https://open.mapquestapi.com/geocoding/v1/address?key=i52Qc0J9YBIq7M8UkGGMjCvUccA8C18F&location=${address}`).then(errorCheck).then(function (res) {
         let results = [];
         loadSpots.forEach(function (e) {
             if (measure(res.results[0].locations[0].latLng.lat, res.results[0].locations[0].latLng.lng, e[0], e[1]) <= 10000) {
