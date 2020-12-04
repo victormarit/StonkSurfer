@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nouvelle Session{% endblock %}
+
+{% block body %}
+    <section class="utilisateurHeader">
+        <div class="consumableHeader">
+            <header>
+                <a href="/" class="logo">StonkSurfer</a>
+                <ul id="navbar">
+                    {% if app.user %}
+                        <li>
+                            <a href="/logout"><i class="fas fa-user-slash"></i> Déconnexion</a>
+                        </li>
+                        <li>
+                            <a href="/utilisateur"><i class="fas fa-user"></i> Mon compte</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="/register"><i class="fas fa-user-plus"></i> S'inscrire</a>
+                        </li>
+                        <li>
+                            <a href="/login"><i class="fas fa-user"></i> Se connecter</a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </header>
+
+        </div>
+    </section>
+<div class="utilisateurContainer ">
+    <a href="/utilisateur">Retour</a>
+    <div class="utilisateurFil">
+        <h2 class="title">Nouvelle Session ! </h2>
+        {{ form_start(sessionForm) }}
+        {{ form_row(sessionForm.idSport, {'attr': {'class': 'form-control'}, 'label': 'Veuillez saisir le sport pratiqué durant la session : '}) }}
+        {{ form_row(sessionForm.idSpot, {'attr': {'class': 'form-control'}, 'label': 'Veuillez saisir votre spot : '}) }}
+        {{ form_row(sessionForm.dateSessionDebut, {'attr': {'class': ''}, 'label': 'Veuillez entrer la date et l\'heure de votre session :'}) }}
+        {{ form_row(sessionForm.dureeSession, {'attr': {'class': 'form-control'}, 'label': 'Veuillez saisir la durée de votre session :'}) }}
+        {{ form_row(sessionForm.commentaire, {'attr': {'class': 'form-control'}, 'label': 'Ajoutez un commentaire sur votre session :'}) }}
+        {{ form_row(sessionForm.notePerformance, {'attr': {'class': 'form-control'}, 'label': 'Notez votre performance lors de la session : :'}) }}
+        {{ form_row(sessionForm.noteEcologique, {'attr': {'class': 'form-control'}, 'label': 'Notez l\'environnement du spot (Pollution etc...):'}) }}
+        {{ form_row(sessionForm.noteInfrastructure, {'attr': {'class': 'form-control'}, 'label': 'Notez les infrastructures du spot : '}) }}
+        {{ form_row(sessionForm.noteEstimationAPI, {'attr': {'class': 'form-control'}, 'label': 'Notez nos prévisions météo :'}) }}
+        {{ form_row(sessionForm.public, {'attr': {'class': 'form-control'}, 'label': 'Voulez vous que votre session soit public ?'}) }}
+        {{ form_row(sessionForm.Valider, {'attr': {'class': 'form-control'}, 'label': 'Validez :'}) }}
+
+        {{ form_end(sessionForm) }}
+    </div>
+</div>
+
+
+
+
+{% endblock %}

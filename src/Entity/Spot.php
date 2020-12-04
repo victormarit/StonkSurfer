@@ -6,6 +6,7 @@ use App\Repository\SpotRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Object_;
 
 /**
  * @ORM\Entity(repositoryClass=SpotRepository::class)
@@ -130,12 +131,12 @@ class Spot
         return $this;
     }
 
-    public function getIdPlage(): ?Plage
+    public function getIdPlage(): ?object
     {
         return $this->idPlage;
     }
 
-    public function setIdPlage(?Plage $idPlage): self
+    public function setIdPlage(?object $idPlage): self
     {
         $this->idPlage = $idPlage;
 

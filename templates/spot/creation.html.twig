@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nouveau Spot{% endblock %}
+
+{% block body %}
+    <section class="utilisateurHeader">
+        <div class="consumableHeader">
+            <header>
+                <a href="/" class="logo">StonkSurfer</a>
+                <ul id="navbar">
+                    {% if app.user %}
+                        <li>
+                            <a href="/logout"><i class="fas fa-user-slash"></i> Déconnexion</a>
+                        </li>
+                        <li>
+                            <a href="/utilisateur"><i class="fas fa-user"></i> Mon compte</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="/register"><i class="fas fa-user-plus"></i> S'inscrire</a>
+                        </li>
+                        <li>
+                            <a href="/login"><i class="fas fa-user"></i> Se connecter</a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </header>
+
+        </div>
+    </section>
+    <div class="utilisateurContainer ">
+        <a href="/utilisateur">Retour</a>
+        <div class="utilisateurFil">
+            <h2 class="title">Nouveau spot ! </h2>
+            {{ form_start(spotForm) }}
+            {{ form_row(spotForm.lieu, {'attr': {'class': 'form-control'}, 'label': 'Entrez le nom du Lieu du spot : '}) }}
+            {{ form_row(spotForm.ville, {'attr': {'class': 'form-control'}, 'label': 'Entrez le nom de la Ville du spot : '}) }}
+            {{ form_row(spotForm.latitude, {'attr': {'class': 'form-control'}, 'label': 'Veuillez saisir la latitude du spot :'}) }}
+            {{ form_row(spotForm.longitude, {'attr': {'class': 'form-control'}, 'label': 'Veuillez saisir la longitude du spot :'}) }}
+            {{ form_row(spotForm.niveauAccessibilite, {'attr': {'class': 'form-control'}, 'label': 'Veuillez saisir le niveau d\'accesibilité:'}) }}
+            {{ form_row(spotForm.Sauvegarder, {'attr': {'class': 'form-control'}, 'label': 'Validez :'}) }}
+            {{ form_end(spotForm) }}
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

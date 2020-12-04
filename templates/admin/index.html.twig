@@ -7,21 +7,7 @@
 {% endblock %}
 
 {% block body %}
-{# TODO : Mettre vrai valeur #}
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand ml-4" href="{{ path('admin') }}">Panel Admin</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-item nav-link ml-2" href="{{ path('app_logout') }}">Déconnexion</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    {% include 'admin/navbar.html.twig' %}
 
     <div class="dashboard">
 
@@ -29,7 +15,7 @@
             <div class="card-body">
                 <h5 class="card-title">Nombre d'utilisateurs </h5>
                 <p>{{ nbUsers }}</p>
-                <a href="#" class="btn btn-primary">Gérer</a>
+                <a href="{{ path('manageUser') }}" class="btn btn-primary">Gérer</a>
             </div>
         </div>
 
@@ -41,7 +27,21 @@
             </div>
         </div>
 
+        <div class="card ml-2 mr-2">
+            <div class="card-body">
+                <h5 class="card-title">Nombre de Spots </h5>
+                <p>{{ nbSpots }}</p>
+                <a href="{{ path('manageSpots') }}" class="btn btn-primary">Voirs les Spots</a>
+            </div>
+        </div>
 
+        <div class="card ml-2 mr-2">
+            <div class="card-body">
+                <h5 class="card-title">Type de plages</h5>
+                <p>{{ nbBeaches }}</p>
+                <a href="{{ path('manageBeachType') }}" class="btn btn-primary">Gérer</a>
+            </div>
+        </div>
 
 
 {% endblock %}

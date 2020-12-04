@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spots{% endblock %}
+
+{% block body %}
+
+    <link rel="stylesheet" href="../../public/styles/admin.css">
+
+
+    {% include 'admin/navbar.html.twig' %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Numéro</th>
+            <th scope="col">Nom Spot </th>
+            <th scope="col">Type</th>
+            <th scope="col">Ville</th>
+            <th scope="col">Longitude</th>
+            <th scope="col">Latitude</th>
+            <th scope="col">Niveau accessibillité</th>
+            <th> Modifier </th>
+            <th> Suprimmer </th>
+        </tr>
+        </thead>
+
+        {% set num = 0 %}
+
+        {% for spot in spots.items %}
+            <tbody>
+            <tr>
+                <th scope="row">{{ spot.id }}</th>
+                <td>{{ spot.lieu }}</td>
+                <td>  </td>
+                <td> {{ spot.ville }}</td>
+                <td> {{ spot.longitude }}</td>
+                <td> {{ spot.latitude}}</td>
+                <td> {{ spot.niveauAccessibilite }}</td>
+                </td>
+                <td>
+                    <a href="{{ path( 'AdminModSpot',  {'id': spot.id} ) }}" class="btn btn-info">Modifier Spot</a>
+                    <a href="{{ path( 'AdminDelSpot',  {'id': spot.id} ) }}" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+
+    <div class="paginator">
+        {{ knp_pagination_render(spots) }}
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des spots{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset("styles/style.css") }}" rel="stylesheet">
+    <link href="{{ asset("styles/resultManagement.css") }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <section class="utilisateurHeader">
+        <div class="consumableHeader">
+            <header>
+                <a href="/" class="logo">StonkSurfer</a>
+                <ul id="navbar">
+                    {% if app.user %}
+                        <li>
+                            <a href="/logout"><i class="fas fa-user-slash"></i> Déconnexion</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="/register"><i class="fas fa-user-plus"></i> S'inscrire</a>
+                        </li>
+                        <li>
+                            <a href="/login"><i class="fas fa-user"></i> Se connecter</a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </header>
+        </div>
+    </section>
+    <h1 class="line">Résultat(s) de votre recherche : </h1>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Lieu</th>
+                <th scope="col">Ville</th>
+                <th scope="col">Latitude</th>
+                <th scope="col">Longitude</th>
+                <th scope="col">Type de plage</th>
+                <th scope="col">Niveau d'accessibilité</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for key,item in spots %}
+                <tr>
+                    <th scope="row">{{ key + 1 }}</th>
+                    <td>{{ item.lieu }}</td>
+                    <td>{{ item.ville }}</td>
+                    <td>{{ item.latitude }}</td>
+                    <td>{{ item.longitude }}</td>
+                    <td>{{ item.idPlage.nom }}</td>
+                    <td>
+                        {% if item.niveauAccessibilite == 10 %}
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        {% elseif item.niveauAccessibilite == 9 %}
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        {% elseif item.niveauAccessibilite == 8 %}
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="far fa-star"></i>
+                        {% elseif item.niveauAccessibilite == 7 %}
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                        {% elseif item.niveauAccessibilite == 6 %}
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                        {% elseif item.niveauAccessibilite == 5 %}
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                        {% elseif item.niveauAccessibilite == 4 %}
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                        {% elseif item.niveauAccessibilite == 3 %}
+                            <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                        {% elseif item.niveauAccessibilite == 2 %}
+                            <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                        {% elseif item.niveauAccessibilite == 1 %}
+                            <i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                        {% else %}
+                            <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if spots|length == 0 %}
+            <p class="text-center">Il n'y a pas de spot à la localisation choisie !</p>
+        {% endif %}
+    </div>
+{% endblock %}

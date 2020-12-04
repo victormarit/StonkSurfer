@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Dashboard Utilisateur{% endblock %}
+{% block title %} Mes sessions {% endblock %}
 
 {% block body %}
     <section class="utilisateurHeader">
@@ -22,7 +22,6 @@
                         <li>
                             <a href="/login"><i class="fas fa-user"></i> Se connecter</a>
                         </li>
-
                     {% endif %}
 
                 </ul>
@@ -32,7 +31,7 @@
         </div>
     </section>
     <div class="utilisateurContainer">
-        <a href="/">Retour</a>
+        <a href="/utilisateur">Retour</a>
         <div class="utilisateurSessions">
 
             <div class="utilisateurSessionsContent">
@@ -40,9 +39,8 @@
                     <a href="/utilisateur/session">Ajouter une session</a>
                 </div>
                 <div class="utilisateurSessionsContentBx">
-                    <a href="/utilisateur/sessions">Mes sessions</a>
+                    <a href="/utilisateur">Fil d'actualité</a>
                 </div>
-
                 <div class="utilisateurSessionsContentBx">
                     <a href="/utilisateur/consumable">Liste consommables</a>
                 </div>
@@ -50,39 +48,38 @@
                 <div class="utilisateurSessionsContentBx">
                     <a href="/utilisateur/ajouterConsumable">Ajouter consommable</a>
                 </div>
+
                 <div class="utilisateurSessionsContentBx">
                     <a href="/spotcreation">Ajouter un spot</a>
                 </div>
             </div>
         </div>
         <div class="utilisateurFil">
-            <h2 class="title">Fil d'actualité </h2>
+            <h2 class="title">Mes sessions </h2>
             {% for session in sessions %}
                 <div class="cardUtilisateurContenu">
+
+
                     <p>Post créé par : {{ session.idUtilisateur.email }}</p>
                     <p>Le : {{ session.dateSessionDebut|date('d/m/Y H:i') }}</p>
                     <p>{{ session.idSpot.Lieu }}</p>
                     <p>{{ session.idSpot.Ville }}</p>
                     <p>{{ session.commentaire }}</p>
                     <p>Note performance de la session :
-                        {% if session.notePerformance >0 %}
                         {% for i in 1.. session.notePerformance  %}
                             <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyLjAwMiA1MTIuMDAyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIuMDAyIDUxMi4wMDI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNNTExLjI2NywxOTcuMjU4Yy0xLjc2NC01LjQzMS02LjQ1Ny05LjM4OS0xMi4xMDctMTAuMjA5bC0xNTguNzIzLTIzLjA2NUwyNjkuNDUyLDIwLjE1Nw0KCQkJYy0yLjUyNi01LjEyLTcuNzQxLTguMzYxLTEzLjQ1LTguMzYxYy01LjcxLDAtMTAuOTI0LDMuMjQxLTEzLjQ1MSw4LjM2MWwtNzAuOTg4LDE0My44MjdsLTE1OC43MiwyMy4wNjUNCgkJCWMtNS42NDksMC44Mi0xMC4zNDQsNC43NzgtMTIuMTA4LDEwLjIwOGMtMS43NjUsNS40MzEtMC4yOTMsMTEuMzkyLDMuNzk2LDE1LjM3N2wxMTQuODQ4LDExMS45NTRMOTIuMjcxLDQ4Mi42NzENCgkJCWMtMC45NjYsNS42MjgsMS4zNDgsMTEuMzE0LDUuOTY3LDE0LjY3MWMyLjYxMywxLjg5OCw1LjcwOCwyLjg2NCw4LjgxOCwyLjg2NGMyLjM4OCwwLDQuNzg0LTAuNTY5LDYuOTc4LTEuNzIzbDE0MS45NjctNzQuNjM4DQoJCQlsMTQxLjk2MSw3NC42MzdjNS4wNTUsMi42NTcsMTEuMTc4LDIuMjE1LDE1Ljc5Ny0xLjE0MWM0LjYxOS0zLjM1Niw2LjkzNC05LjA0NCw1Ljk2OS0xNC42NzJsLTI3LjExNy0xNTguMDgxbDExNC44NjEtMTExLjk1NQ0KCQkJQzUxMS41NiwyMDguNjQ5LDUxMy4wMzMsMjAyLjY4OCw1MTEuMjY3LDE5Ny4yNTh6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=" />
                         {% endfor %}
-                        {% endif %}
                         {% set reste = 5 - session.notePerformance %}
                         {% if reste>0 %}
-                            {% for a in 0..reste-1  %}
+                            {% for a in 0..reste  %}
                                 <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyLjAwMSA1MTIuMDAxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIuMDAxIDUxMi4wMDE7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNNTExLjI2NiwxOTcuMjU2Yy0xLjc2NC01LjQzMS02LjQ1OC05LjM4OC0xMi4xMDgtMTAuMjA5bC0xNTguNzIyLTIzLjA2NUwyNjkuNDUyLDIwLjE1NQ0KCQkJYy0yLjUyNy01LjEyLTcuNzQxLTguMzYxLTEzLjQ1MS04LjM2MWMtNS43MDksMC0xMC45MjQsMy4yNDItMTMuNDUxLDguMzYxbC03MC45ODgsMTQzLjgyOEwxMi44NDMsMTg3LjA0Nw0KCQkJYy01LjY1LDAuODIxLTEwLjM0NCw0Ljc3OS0xMi4xMDgsMTAuMjA5Yy0xLjc2NSw1LjQzLTAuMjkzLDExLjM5MSwzLjc5NSwxNS4zNzZsMTE0Ljg0OCwxMTEuOTU1TDkyLjI3LDQ4Mi42Nw0KCQkJYy0wLjk2NSw1LjYyNywxLjM0OSwxMS4zMTUsNS45NjgsMTQuNjdjNC42MTgsMy4zNTUsMTAuNzQsMy43OTgsMTUuNzk3LDEuMTQyTDI1Niw0MjMuODQ2bDE0MS45NjEsNzQuNjM3DQoJCQljMi4xOTUsMS4xNTQsNC41OTEsMS43MjMsNi45NzksMS43MjNjMy4xMSwwLDYuMjA2LTAuOTY2LDguODE4LTIuODY1YzQuNjE5LTMuMzU2LDYuOTMzLTkuMDQzLDUuOTY4LTE0LjY3MUwzOTIuNjEsMzI0LjU4Nw0KCQkJbDExNC44Ni0xMTEuOTU0QzUxMS41NTksMjA4LjY0Nyw1MTMuMDMxLDIwMi42ODYsNTExLjI2NiwxOTcuMjU2eiBNMzY2LjAyMywzMDguNjA4Yy0zLjUzNiwzLjQ0Ni01LjE1LDguNDEyLTQuMzE0LDEzLjI3OA0KCQkJbDIzLjMxMSwxMzUuODk4bC0xMjIuMDM4LTY0LjE2MmMtNC4zNy0yLjI5Ny05LjU5MS0yLjI5Ny0xMy45NjEsMGwtMTIyLjA0NSw2NC4xNjNsMjMuMzA0LTEzNS45DQoJCQljMC44MzQtNC44NjYtMC43NzktOS44My00LjMxMy0xMy4yNzZsLTk4LjczMS05Ni4yNDRsMTM2LjQ0NS0xOS44MjljNC44ODYtMC43MSw5LjEwOC0zLjc3OCwxMS4yOTQtOC4yMDVMMjU2LDYwLjY4NQ0KCQkJbDYxLjAyMywxMjMuNjQ1YzIuMTg2LDQuNDI3LDYuNDA4LDcuNDk2LDExLjI5NCw4LjIwNmwxMzYuNDQ3LDE5LjgyOEwzNjYuMDIzLDMwOC42MDh6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=" />
                             {% endfor  %}
                         {% endif %}
                     </p>
                     <p>Note écologique du spot :
-                        {% if session.noteEcologique >0 %}
                         {% for i in 1.. session.noteEcologique  %}
                             <img  src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyLjAwMiA1MTIuMDAyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIuMDAyIDUxMi4wMDI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNNTExLjI2NywxOTcuMjU4Yy0xLjc2NC01LjQzMS02LjQ1Ny05LjM4OS0xMi4xMDctMTAuMjA5bC0xNTguNzIzLTIzLjA2NUwyNjkuNDUyLDIwLjE1Nw0KCQkJYy0yLjUyNi01LjEyLTcuNzQxLTguMzYxLTEzLjQ1LTguMzYxYy01LjcxLDAtMTAuOTI0LDMuMjQxLTEzLjQ1MSw4LjM2MWwtNzAuOTg4LDE0My44MjdsLTE1OC43MiwyMy4wNjUNCgkJCWMtNS42NDksMC44Mi0xMC4zNDQsNC43NzgtMTIuMTA4LDEwLjIwOGMtMS43NjUsNS40MzEtMC4yOTMsMTEuMzkyLDMuNzk2LDE1LjM3N2wxMTQuODQ4LDExMS45NTRMOTIuMjcxLDQ4Mi42NzENCgkJCWMtMC45NjYsNS42MjgsMS4zNDgsMTEuMzE0LDUuOTY3LDE0LjY3MWMyLjYxMywxLjg5OCw1LjcwOCwyLjg2NCw4LjgxOCwyLjg2NGMyLjM4OCwwLDQuNzg0LTAuNTY5LDYuOTc4LTEuNzIzbDE0MS45NjctNzQuNjM4DQoJCQlsMTQxLjk2MSw3NC42MzdjNS4wNTUsMi42NTcsMTEuMTc4LDIuMjE1LDE1Ljc5Ny0xLjE0MWM0LjYxOS0zLjM1Niw2LjkzNC05LjA0NCw1Ljk2OS0xNC42NzJsLTI3LjExNy0xNTguMDgxbDExNC44NjEtMTExLjk1NQ0KCQkJQzUxMS41NiwyMDguNjQ5LDUxMy4wMzMsMjAyLjY4OCw1MTEuMjY3LDE5Ny4yNTh6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=" />
                         {% endfor %}
-                        {% endif %}
                         {% set reste = 5 - session.noteEcologique %}
                         {% if reste>0 %}
                             {% for a in 0..reste-1  %}
@@ -91,11 +88,9 @@
                         {% endif %}
                     </p>
                     <p>Note des infrastructures du spot :
-                        {% if session.noteInfrastructure >0 %}
                         {% for i in 1.. session.noteInfrastructure  %}
                             <img  src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyLjAwMiA1MTIuMDAyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIuMDAyIDUxMi4wMDI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNNTExLjI2NywxOTcuMjU4Yy0xLjc2NC01LjQzMS02LjQ1Ny05LjM4OS0xMi4xMDctMTAuMjA5bC0xNTguNzIzLTIzLjA2NUwyNjkuNDUyLDIwLjE1Nw0KCQkJYy0yLjUyNi01LjEyLTcuNzQxLTguMzYxLTEzLjQ1LTguMzYxYy01LjcxLDAtMTAuOTI0LDMuMjQxLTEzLjQ1MSw4LjM2MWwtNzAuOTg4LDE0My44MjdsLTE1OC43MiwyMy4wNjUNCgkJCWMtNS42NDksMC44Mi0xMC4zNDQsNC43NzgtMTIuMTA4LDEwLjIwOGMtMS43NjUsNS40MzEtMC4yOTMsMTEuMzkyLDMuNzk2LDE1LjM3N2wxMTQuODQ4LDExMS45NTRMOTIuMjcxLDQ4Mi42NzENCgkJCWMtMC45NjYsNS42MjgsMS4zNDgsMTEuMzE0LDUuOTY3LDE0LjY3MWMyLjYxMywxLjg5OCw1LjcwOCwyLjg2NCw4LjgxOCwyLjg2NGMyLjM4OCwwLDQuNzg0LTAuNTY5LDYuOTc4LTEuNzIzbDE0MS45NjctNzQuNjM4DQoJCQlsMTQxLjk2MSw3NC42MzdjNS4wNTUsMi42NTcsMTEuMTc4LDIuMjE1LDE1Ljc5Ny0xLjE0MWM0LjYxOS0zLjM1Niw2LjkzNC05LjA0NCw1Ljk2OS0xNC42NzJsLTI3LjExNy0xNTguMDgxbDExNC44NjEtMTExLjk1NQ0KCQkJQzUxMS41NiwyMDguNjQ5LDUxMy4wMzMsMjAyLjY4OCw1MTEuMjY3LDE5Ny4yNTh6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=" />
                         {% endfor %}
-                        {% endif %}
                         {% set reste = 5 - session.noteInfrastructure %}
                         {% if reste>0 %}
                             {% for a in 0..reste-1  %}
@@ -103,7 +98,14 @@
                             {% endfor  %}
                         {% endif %}
                     </p>
+
                 </div>
+                <center>
+                    <div class="utilisateurSessionsContentBx mt-3 mb-3">
+                        <a href="/utilisateur/sessions/{{ session.id }}">Modifier</a>
+                    </div>
+                </center>
+
             {% endfor %}
         </div>
         <svg>

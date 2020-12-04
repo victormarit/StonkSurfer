@@ -1,29 +1,64 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ConsumableController!{% endblock %}
+{% block title %}Liste des consommables{% endblock %}
 
 {% block body %}
-<div class="consumableHeader">
-    <header>
-        <a href="/" class="logo">StonkSurfer</a>
-        <ul id="navbar">
-            <li>
-                <a href="/register"><i class="fas fa-user-plus"></i> S'inscrire</a>
-            </li>
-            <li>
-                <a href="/login"><i class="fas fa-user"></i> Se connecter</a>
-            </li>
-        </ul>
-    </header>
-</div>
-<div class="consumableContentBx">
-    <h1 class="title">Liste des cosmétiques</h1>
-    <div class="consumableContent">
-        <div class="consumable">
-            <img src="#" alt="imageConsumable">
-            <p>Description du produit</p>
-            <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-        </div>
+<section class="utilisateurHeader">
+    <div class="consumableHeader">
+        <header>
+            <a href="/" class="logo">StonkSurfer</a>
+            <ul id="navbar">
+                {% if app.user %}
+                    <li>
+                        <a href="/logout"><i class="fas fa-user-slash"></i> Déconnexion</a>
+                    </li>
+                    <li>
+                        <a href="/utilisateur"><i class="fas fa-user"></i> Mon compte</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="/register"><i class="fas fa-user-plus"></i> S'inscrire</a>
+                    </li>
+                    <li>
+                        <a href="/login"><i class="fas fa-user"></i> Se connecter</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </header>
     </div>
+</section>
+<a href="/utilisateur">Retour</a>
+<div class="consumableContentBx">
+    <h1 class="title">Liste des consommables</h1>
+    <div class="consumableContent">
+        {% for consommable in consommables %}
+        <div class="consumable">
+            <h2> {{ consommable.nomProduit }}</h2>
+            <img src="{{ consommable.photo }}" alt="imageConsumable">
+            <h5>Description du produit</h5>
+            <p>{{ consommable.commentaire }}</p>
+
+
+
+            <p>{% if consommable.note >0 %}
+                {% for i in 1.. consommable.note  %}
+                    <i class="fas fa-star"></i>
+                {% endfor %}
+                {% endif %}
+                {% set reste = 5 - consommable.note %}
+                {% if reste>0 %}
+                    {% for a in 0..reste-1  %}
+                        <i class="far fa-star"></i>
+                    {% endfor  %}
+                {% endif %}</p>
+        </div>
+        {% endfor %}
+
 </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset("js/index.js") }}" defer></script>
 {% endblock %}

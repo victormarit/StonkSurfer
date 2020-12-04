@@ -11,38 +11,32 @@
         <thead>
         <tr>
             <th scope="col">Numéro</th>
-            <th scope="col">Email</th>
-            <th scope="col">Role</th>
+            <th scope="col">Type</th>
             <th scope="col">Commandes</th>
         </tr>
         </thead>
 
         {% set num = 0 %}
 
-        {% for user in users.items %}
+        {% for beach in beaches.items %}
             {% set num = num + 1 %}
             <tbody>
             <tr>
                 <th scope="row">{{ num }}</th>
-                <td>{{ user.email }}</td>
+                <td>{{ beach.nom }}</td>
                 <td>
-                    {% if user.roles|length > 1 %}
-                        Administrateur
-                    {% else %}
-                        Utilisateur
-                    {% endif %}
-                </td>
-                    <td>
-                    <a href="{{ path( 'AdminUpdateUser',  {'id': user.id} ) }}" class="btn btn-info">Modifier Rôle</a>
-                    <a href="{{ path( 'AdminDelUser',  {'id': user.id} ) }}" class="btn btn-danger">Supprimer</a>
+                    <a href="{{ path( 'updateBeach',  {'id': beach.id} ) }}" class="btn btn-info">Modifier</a>
+                    <a href="{{ path( 'delBeach',  {'id': beach.id} ) }}" class="btn btn-danger">Supprimer</a>
                 </td>
             </tr>
             </tbody>
         {% endfor %}
     </table>
 
+    <a href="{{ path( 'addBeach') }}" class="btn btn-primary">Ajouter</a>
+
     <div class="paginator">
-        {{ knp_pagination_render(users) }}
+        {{ knp_pagination_render(beaches) }}
     </div>
 
 

@@ -1,12 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion{% endblock %}
 {% block stylesheets %}
     <link href="{{ asset("styles/style.css") }}" rel="stylesheet">
     <link href="{{ asset("styles/login.css") }}" rel="stylesheet">
 {% endblock %}
 {% block body %}
+    <section class="utilisateurHeader">
+        <div class="consumableHeader">
+            <header>
+                <a href="/" class="logo">StonkSurfer</a>
+                <ul id="navbar">
+                    {% if app.user %}
+                        <li>
+                            <a href="/logout"><i class="fas fa-user-slash"></i> Déconnexion</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="/register"><i class="fas fa-user-plus"></i> S'inscrire</a>
+                        </li>
+                        <li>
+                            <a href="/login"><i class="fas fa-user"></i> Se connecter</a>
+                        </li>
+                    {% endif %}
 
+                </ul>
+            </header>
+        </div>
+    </section>
     <form method="post" class="formClass">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

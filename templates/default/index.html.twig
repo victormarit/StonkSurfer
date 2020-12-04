@@ -11,72 +11,93 @@
 {% block body %}
     <section class="headerContainer">
         <header>
-            <a href="/" class="logo">StonkSurfer</a>
+            <h2 ><a href="/">StonkSurfer</a></h2>
+            <div class="logo">
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+                <span style="--i:4;"></span>
+                <span style="--i:5;"></span>
+                <span style="--i:6;"></span>
+                <span style="--i:7;"></span>
+            </div>
             <ul id="navbar">
-                <li>
-                    <a href="/register"><i class="fas fa-user-plus"></i> S'inscrire</a>
-                </li>
-                <li>
-                    <a href="/login"><i class="fas fa-user"></i> Se connecter</a>
-                </li>
+                {% if app.user %}
+                    <li>
+                        <a href="/logout"><i class="fas fa-user-slash"></i> Déconnexion</a>
+                    </li>
+                    <li>
+                        <a href="/utilisateur"><i class="fas fa-user"></i> Mon compte</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="/register"><i class="fas fa-user-plus"></i> S'inscrire</a>
+                    </li>
+                    <li>
+                        <a href="/login"><i class="fas fa-user"></i> Se connecter</a>
+                    </li>
+                {% endif %}
+
             </ul>
+
         </header>
         <div class="headerImg">
             <form action="" method="GET" id="rechercherSpot">
                 <input type="text" placeholder="Rechercher un spot dès maintenant !">
-                <button>Rechercher</button>
+                <button><span>Rechercher</span>
+                <div class="liquid"></div>
+                </button>
             </form>
 
         </div>
     </section>
     <section class="descriptionContainer">
-        <h1>Bienvenue sur StonkSurfer</h1>
+        <h1 class="line">Bienvenue sur StonkSurfer</h1>
         <div class="contentBx">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dignissimos enim eos fugiat impedit iste laboriosam mollitia nostrum odio odit, officia possimus quae quod reiciendis vitae. A beatae culpa deserunt eaque eius eligendi ex, exercitationem laborum maxime mollitia non nulla obcaecati pariatur perferendis provident reiciendis, sint temporibus totam vel veniam veritatis voluptas voluptatem? A accusamus amet autem consequuntur debitis, deserunt eius eos expedita, facilis, in itaque nam officiis quia quidem ratione reprehenderit sit ullam ut vel veritatis? Aliquam aperiam architecto, commodi delectus, deleniti deserunt dolorem doloribus explicabo iure magni maiores maxime modi placeat porro provident quidem recusandae sequi soluta, voluptatem!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dignissimos enim eos fugiat impedit iste laboriosam mollitia nostrum odio odit, officia possimus quae quod reiciendis vitae. A beatae culpa deserunt eaque eius eligendi ex, exercitationem laborum maxime mollitia non nulla obcaecati pariatur perferendis provident reiciendis, sint temporibus totam vel veniam veritatis voluptas voluptatem? A accusamus amet autem consequuntur debitis, deserunt eius eos expedita, facilis, in itaque nam officiis quia quidem ratione reprehenderit sit ullam ut vel veritatis? Aliquam aperiam architecto, commodi delectus, deleniti deserunt dolorem doloribus explicabo iure magni maiores maxime modi placeat porro provident quidem recusandae sequi soluta, voluptatem!</p>
+           <p>StonkSurfer est un site web visant à préserver ce sport mythique qu'est le surf. Les plages, mers et océans étant de plus en plus menacés par la pollution,
+           c'est donc à nous, surfeurs de tout faire pour préserver ce qui nous est cher. C'est pourquoi nous avons développé StonkSurfer.
+           Profitant de données en temps réel, vous pourrez ainsi tout savoir de votre spot préféré, que ce soit le nombre de surfeurs ou encore l'était du spot.
+           Vous pourrez ainsi sauver votre environnement tout en profitant au maximum.</p>
         </div>
     </section>
     <section class="utilisationContainer">
 
- <h2 class="title">Pourquoi utiliser StonkSurfer ?</h2>
+        <h2 class="title">Pourquoi utiliser StonkSurfer ?</h2>
         <div class="cardBx">
             <div class="card">
                 <div class="imgBx">
-                    <p>Image</p>
+                    <p><i class="fas fa-leaf"></i></i></p>
                 </div>
                 <div class="contentBx">
                     <h2>écologie</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptatum incidunt molestiae quo repellendus, libero distinctio tenetur id repudiandae inventore maxime voluptates nesciunt nulla voluptate. Quidem qui maxime recusandae amet, cumque earum.
-                        Neque, nisi, veniam corporis architecto at dicta beatae voluptate inventore iusto obcaecati sapiente totam nam vitae debitis illo!
+                       Grâce au système de notation des spots, les surfers sauront en temps réel si l'un des spot est en mauvais état et pourront ainsi les entretenir et préserver l'état des plages et des mers.
                     </p>
-                    <a href="#"><span>Read More</span></a>
+
                 </div>
             </div>
             <div class="card">
                 <div class="imgBx">
-                    <p>Image</p>
+                    <p><i class="fas fa-users"></i></p>
                 </div>
                 <div class="contentBx">
                     <h2>social</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptatum incidunt molestiae quo repellendus, libero distinctio tenetur id repudiandae inventore maxime voluptates nesciunt nulla voluptate. Quidem qui maxime recusandae amet, cumque earum.
-                        Neque, nisi, veniam corporis architecto at dicta beatae voluptate inventore iusto obcaecati sapiente totam nam vitae debitis illo!
+                        Grâce au système de localisation, vous pourrez connaître en temps réel l'indice de population autour d'un spot et ainsi y retrouver de nombreux surfeurs et relever des défis.
                     </p>
-                    <a href="#"><span>Read More</span></a>
+
                 </div>
             </div>
             <div class="card">
                 <div class="imgBx">
-                    <p>Image</p>
+                    <p><i class="fas fa-dumbbell"></i></p>
                 </div>
                 <div class="contentBx">
                     <h2>Performance</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptatum incidunt molestiae quo repellendus, libero distinctio tenetur id repudiandae inventore maxime voluptates nesciunt nulla voluptate. Quidem qui maxime recusandae amet, cumque earum.
-                        Neque, nisi, veniam corporis architecto at dicta beatae voluptate inventore iusto obcaecati sapiente totam nam vitae debitis illo!
+                        En partageant vos sessions, vous pourrez montrer que vous êtes le meilleur et vous pourrez ainsi challenger les autres surfeurs en franchissant les vagues les plus imposantes.
                     </p>
-                    <a href="#"><span>Read More</span></a>
+
                 </div>
             </div>
         </div>
@@ -88,10 +109,9 @@
         </div>
     </div>
 {% endblock %}
-
 {% block javascripts %}
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-            crossorigin="" defer></script>
+            crossorigin="anonymous" defer></script>
     <script src="{{ asset("js/index.js") }}" defer></script>
 {% endblock %}

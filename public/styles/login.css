@@ -1,4 +1,4 @@
 body{
-    background-image: url("../photo/ocean-918999_1920.jpg");
-
+    background: url("../photo/ocean-918999_1920.jpg") center center / cover no-repeat;
+    background-attachment: fixed;
 }

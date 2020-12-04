@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un Consommable{% endblock %}
+
+{% block body %}
+    <section class="utilisateurHeader">
+        <div class="consumableHeader">
+            <header>
+                <a href="/" class="logo">StonkSurfer</a>
+                <ul id="navbar">
+                    {% if app.user %}
+                        <li>
+                            <a href="/logout"><i class="fas fa-user-slash"></i> Déconnexion</a>
+
+                        </li>
+                        <li>
+                            <a href="/utilisateur"><i class="fas fa-user"></i> Mon compte</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="/register"><i class="fas fa-user-plus"></i> S'inscrire</a>
+                        </li>
+                        <li>
+                            <a href="/login"><i class="fas fa-user"></i> Se connecter</a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </header>
+
+        </div>
+    </section>
+    <div class="utilisateurContainer ">
+        <a href="/utilisateur/">Retour</a>
+
+        <div class="utilisateurFil">
+            <h2 class="title">Nouvelle Session ! </h2>
+            {{ form_start(consoForm) }}
+            {{ form_row(consoForm.nomProduit, {'attr': {'class': 'form-control'}, 'label': 'Saissisez le nom de votre produit : '}) }}
+            {{ form_row(consoForm.commentaire, {'attr': {'class': 'form-control'}, 'label': 'Veuillez saisir un commentaire : '}) }}
+            {{ form_row(consoForm.note, {'attr': {'class': ''}, 'label': 'Veuillez entrer la note du produit :'}) }}
+            {{ form_row(consoForm.photo, {'attr': {'class': 'form-control'}, 'label': 'Veuillez saisir l\'url de votre image correspondant à votre produit :'}) }}
+            {{ form_row(consoForm.idType, {'attr': {'class': 'form-control'}, 'label': 'Veuillez saisir le type de produit : '}) }}
+            {{ form_row(consoForm.Ajouter, {'attr': {'class': 'form-control mt-2'}, 'label': 'Validez :'}) }}
+
+
+            {{ form_end(consoForm) }}
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

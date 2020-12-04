@@ -33,6 +33,11 @@ class Consommable
     private $note;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $photo;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="consommables")
      */
     private $idType;
@@ -77,6 +82,18 @@ class Consommable
 
         return $this;
     }
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(string $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
 
     public function getIdType(): ?Type
     {

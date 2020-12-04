@@ -1,5 +1,6 @@
 let mymap;
 let loadSpots = [];
+let searchedSpotsWithinRange = [];
 
 $("document").ready(function () {
     mymap = L.map('map').fitWorld();
@@ -31,19 +32,24 @@ $("document").ready(function () {
 
     const header = document.querySelector("header");
     const container = document.querySelector(".headerContainer");
+    const containerConsumable = document.querySelector(".consumableHeader");
     const navbar = document.querySelector("#navbar");
+    const animationh1 = document.querySelector("h1");
+    const description = document.querySelector(".descriptionContainer");
     let TotalHeight = document.body.scrollHeight - window.innerHeight;
     window.onscroll = function () {
         let progress = (window.pageYOffset / TotalHeight) * 100;
         if (progress > container.scrollHeight / 25) {
             header.style.background = "rgba(255, 255, 255, 0.8)";
-            header.style.height = "100px";
-            navbar.style.fontSize = "20px";
+            animationh1.style.opacity = 1;
+            animationh1.classList.add("anime-typewritter");
 
         } else {
             header.style.backgroundColor = "transparent";
             navbar.style.fontSize = "1em";
         }
+
+
     };
 
     $("#rechercherSpot").on("submit", onSubmitRechercherSpot);
@@ -86,7 +92,7 @@ function catchError(err) {
 }
 
 async function getLocation(address) {
-    fetch(`http://open.mapquestapi.com/geocoding/v1/address?key=i52Qc0J9YBIq7M8UkGGMjCvUccA8C18F&location=${address}`).then(errorCheck).then(res => {
+    fetch(`http://open.mapquestapi.com/geocoding/v1/address?key=i52Qc0J9YBIq7M8UkGGMjCvUccA8C18F&location=${address}`).then(errorCheck).then(function (res) {
         let results = [];
         loadSpots.forEach(function (e) {
             console.log(res.results[0].locations[0].latLng.lat);
@@ -104,6 +110,8 @@ async function getLocation(address) {
         });
 
         console.log(results);
+        searchedSpotsWithinRange = results;
+        postAndRedirect('/spotResults', {results: results});
     }).catch(catchError);
 }
 
@@ -112,16 +120,36 @@ function onSubmitRechercherSpot(event) {
     getLocation($($(this).children()[0]).val());
 }
 
-function measure(lat1, lon1, lat2, lon2){  // generally used geo measurement function
+function measure(lat1, lon1, lat2, lon2) {  // generally used geo measurement function
     var R = 6378.137; // Radius of earth in KM
     var dLat = lat2 * Math.PI / 180 - lat1 * Math.PI / 180;
     var dLon = lon2 * Math.PI / 180 - lon1 * Math.PI / 180;
-    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
         Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-        Math.sin(dLon/2) * Math.sin(dLon/2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c;
     return d * 1000; // meters
+}
+
+function postAndRedirect(url, postData)
+{
+    var postFormStr = "<form method='POST' action='" + url + "'>\n";
+
+    for (var key in postData)
+    {
+        if (postData.hasOwnProperty(key))
+        {
+            postFormStr += "<input type='hidden' name='" + key + "' value='" + postData[key] + "'></input>";
+        }
+    }
+
+    postFormStr += "</form>";
+
+    var formElement = $(postFormStr);
+
+    $('body').append(formElement);
+    $(formElement).submit();
 }
 
 

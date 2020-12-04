@@ -3,24 +3,188 @@
     padding : 0;
     box-sizing: border-box;
 }
-
-
-
-.cardUtilisateurFil {
-    position: relative;
-    padding: 20px 20px 20px;
-    background: #f7f7f7;
-    border-radius: 2px;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+/* header */
+.utilisateurHeader {
+    height: 10vh;
 }
-.cardUtilisateurContenu {
-    position: relative;
-    padding: 10px 10px 10px;
-    background: #f7f7f7;
-    border-radius: 2px;
-    -webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+.utilisateurHeader header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    padding: 30px 100px;
+    transition: 0.25s;
 }
+
+.utilisateurHeader header .logo {
+    position: relative;
+    font-weight: 700;
+    font-size: 2em;
+    text-decoration: none;
+    color: #4BB3FD;
+
+}
+
+.utilisateurHeader header ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.utilisateurHeader header ul li {
+    position: relative;
+    list-style: none;
+    margin-left: 40px;
+}
+
+.utilisateurHeader header ul li a {
+    text-decoration: none;
+    color : #4BB3FD;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+/* container */
+.utilisateurContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #4BB3FD;
+
+}
+
+.utilisateurContainer .utilisateurFil {
+    width: 80%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center ;
+    padding-top: 2rem;
+}
+/*
+.utilisateurContainer .utilisateurFil .cardUtilisateurContenu {
+    height: 400px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border : 2px solid #4BB3FD;
+    margin-top: 1rem;
+}
+
+
+
+*/
+.utilisateurContainer .utilisateurFil .cardUtilisateurContenu  {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+
+}
+
+.utilisateurContainer .utilisateurFil .cardUtilisateurContenu:hover {
+    color: #fff;
+}
+
+.utilisateurContainer .utilisateurFil .cardUtilisateurContenu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 100%;
+    height: 100%;
+    border: 4px solid #fff;
+    background: rgba(0,0,255,.3);
+    filter: url(#wavy);
+}
+
+.utilisateurContainer .utilisateurFil .cardUtilisateurContenu:hover::before {
+    background: rgba(0,0,255,.2);
+    transition: 0.5s;
+}
+
+.utilisateurContainer .utilisateurFil .cardUtilisateurContenu::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 50%;
+    height: 100%;
+    border: 4px solid #fff;
+    border-right: none;
+    background: rgba(255, 255, 255, .1);
+    filter: url(#wavy);
+}
+
+.utilisateurContainer .utilisateurFil .cardUtilisateurContenu p {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #111;
+    z-index: 100;
+}
+
+.utilisateurContainer .utilisateurFil .cardUtilisateurContenu p img {
+    width: 10px;
+    height: 10px;
+}
+svg {
+    width: 0;
+    height: 0;
+}
+
+
+.utilisateurContainer .utilisateurSessions{
+    width: 20%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 2rem;
+    border-right : 2px solid #4BB3FD;
+
+}
+
+.utilisateurContainer .utilisateurSessions .utilisateurSessionsContent {
+    min-height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.utilisateurContainer .utilisateurSessions .utilisateurSessionsContent .utilisateurSessionsContentBx{
+    height: 100px;
+    width: 80%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.utilisateurContainer .utilisateurSessions .utilisateurSessionsContent .utilisateurSessionsContentBx a {
+    text-decoration: none;
+    color: #4BB3FD;
+    font-size: 1.2em;
+    font-weight: 500;
+    text-align: center;
+}
+
+
+
+
+
+
