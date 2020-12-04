@@ -39,12 +39,12 @@ class SpotController extends AbstractController
                 $longs[$count] = $splitTab[$i + 1];
                 $count++;
             }
-
-            $spots = $this->getDoctrine()->getRepository(Spot::class)->findBy(['latitude' => $lats, 'longitude' => $longs]);
-            return $this->render("spot/resultManagement.html.twig", [
-                "spots" => $spots
-            ]);
         }
+
+        $spots = $this->getDoctrine()->getRepository(Spot::class)->findBy(['latitude' => $lats, 'longitude' => $longs]);
+        return $this->render("spot/resultManagement.html.twig", [
+            "spots" => $spots
+        ]);
     }
 
     /**
