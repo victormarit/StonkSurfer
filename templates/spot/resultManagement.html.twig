@@ -38,7 +38,6 @@
                 <th scope="col">Ville</th>
                 <th scope="col">Latitude</th>
                 <th scope="col">Longitude</th>
-                <th scope="col">Type de plage</th>
                 <th scope="col">Niveau d'accessibilité</th>
             </tr>
             </thead>
@@ -50,7 +49,6 @@
                     <td>{{ item.ville }}</td>
                     <td>{{ item.latitude }}</td>
                     <td>{{ item.longitude }}</td>
-                    <td>{{ item.idPlage.nom }}</td>
                     <td>
                         {% if item.niveauAccessibilite == 10 %}
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
