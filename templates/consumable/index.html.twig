@@ -3,18 +3,27 @@
 {% block title %}Hello ConsumableController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Utilisateur/grego/Documents/GitKraken/StonkSurfer/src/Controller/ConsumableController.php'|file_link(0) }}">src/Controller/ConsumableController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Utilisateur/grego/Documents/GitKraken/StonkSurfer/templates/consumable/index.html.twig'|file_link(0) }}">templates/consumable/index.html.twig</a></code></li>
-    </ul>
+<div class="consumableHeader">
+    <header>
+        <a href="/" class="logo">StonkSurfer</a>
+        <ul id="navbar">
+            <li>
+                <a href="/register"><i class="fas fa-user-plus"></i> S'inscrire</a>
+            </li>
+            <li>
+                <a href="/login"><i class="fas fa-user"></i> Se connecter</a>
+            </li>
+        </ul>
+    </header>
+</div>
+<div class="consumableContentBx">
+    <h1 class="title">Liste des cosmétiques</h1>
+    <div class="consumableContent">
+        <div class="consumable">
+            <img src="#" alt="imageConsumable">
+            <p>Description du produit</p>
+            <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+        </div>
+    </div>
 </div>
 {% endblock %}

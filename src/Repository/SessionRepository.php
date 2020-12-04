@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Spot;
+use App\Entity\Session;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Spot|null find($id, $lockMode = null, $lockVersion = null)
- * @method Spot|null findOneBy(array $criteria, array $orderBy = null)
- * @method Spot[]    findAll()
- * @method Spot[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Session|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Session|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Session[]    findAll()
+ * @method Session[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SpotRepository extends ServiceEntityRepository
+class SessionRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Spot::class);
+        parent::__construct($registry, Session::class);
     }
 
     // /**
@@ -47,17 +47,4 @@ class SpotRepository extends ServiceEntityRepository
         ;
     }
     */
-    public function findAllSpots(): array
-    {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = '
-            SELECT * FROM spot
-            ';
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        // returns an array of arrays (i.e. a raw data set)
-        return $stmt->fetchAllAssociative();
-    }
 }

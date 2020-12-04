@@ -1,20 +1,97 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block title %}Accueil | StonkSurfer{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <section class="headerContainer">
+        <header>
+            <a href="/" class="logo">StonkSurfer</a>
+            <ul id="navbar">
+                <li>
+                    <a href="/register"><i class="fas fa-user-plus"></i> S'inscrire</a>
+                </li>
+                <li>
+                    <a href="/login"><i class="fas fa-user"></i> Se connecter</a>
+                </li>
+            </ul>
+        </header>
+        <div class="headerImg">
+            <form action="" method="GET" id="rechercherSpot">
+                <input type="text" placeholder="Rechercher un spot dès maintenant !">
+                <button>Rechercher</button>
+            </form>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        </div>
+    </section>
+    <section class="descriptionContainer">
+        <h1>Bienvenue sur StonkSurfer</h1>
+        <div class="contentBx">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dignissimos enim eos fugiat impedit iste laboriosam mollitia nostrum odio odit, officia possimus quae quod reiciendis vitae. A beatae culpa deserunt eaque eius eligendi ex, exercitationem laborum maxime mollitia non nulla obcaecati pariatur perferendis provident reiciendis, sint temporibus totam vel veniam veritatis voluptas voluptatem? A accusamus amet autem consequuntur debitis, deserunt eius eos expedita, facilis, in itaque nam officiis quia quidem ratione reprehenderit sit ullam ut vel veritatis? Aliquam aperiam architecto, commodi delectus, deleniti deserunt dolorem doloribus explicabo iure magni maiores maxime modi placeat porro provident quidem recusandae sequi soluta, voluptatem!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dignissimos enim eos fugiat impedit iste laboriosam mollitia nostrum odio odit, officia possimus quae quod reiciendis vitae. A beatae culpa deserunt eaque eius eligendi ex, exercitationem laborum maxime mollitia non nulla obcaecati pariatur perferendis provident reiciendis, sint temporibus totam vel veniam veritatis voluptas voluptatem? A accusamus amet autem consequuntur debitis, deserunt eius eos expedita, facilis, in itaque nam officiis quia quidem ratione reprehenderit sit ullam ut vel veritatis? Aliquam aperiam architecto, commodi delectus, deleniti deserunt dolorem doloribus explicabo iure magni maiores maxime modi placeat porro provident quidem recusandae sequi soluta, voluptatem!</p>
+        </div>
+    </section>
+    <section class="utilisationContainer">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Utilisateur/grego/Documents/GitKraken/StonkSurfer/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Utilisateur/grego/Documents/GitKraken/StonkSurfer/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
-    </ul>
-</div>
+ <h2 class="title">Pourquoi utiliser StonkSurfer ?</h2>
+        <div class="cardBx">
+            <div class="card">
+                <div class="imgBx">
+                    <p>Image</p>
+                </div>
+                <div class="contentBx">
+                    <h2>écologie</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptatum incidunt molestiae quo repellendus, libero distinctio tenetur id repudiandae inventore maxime voluptates nesciunt nulla voluptate. Quidem qui maxime recusandae amet, cumque earum.
+                        Neque, nisi, veniam corporis architecto at dicta beatae voluptate inventore iusto obcaecati sapiente totam nam vitae debitis illo!
+                    </p>
+                    <a href="#"><span>Read More</span></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="imgBx">
+                    <p>Image</p>
+                </div>
+                <div class="contentBx">
+                    <h2>social</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptatum incidunt molestiae quo repellendus, libero distinctio tenetur id repudiandae inventore maxime voluptates nesciunt nulla voluptate. Quidem qui maxime recusandae amet, cumque earum.
+                        Neque, nisi, veniam corporis architecto at dicta beatae voluptate inventore iusto obcaecati sapiente totam nam vitae debitis illo!
+                    </p>
+                    <a href="#"><span>Read More</span></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="imgBx">
+                    <p>Image</p>
+                </div>
+                <div class="contentBx">
+                    <h2>Performance</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptatum incidunt molestiae quo repellendus, libero distinctio tenetur id repudiandae inventore maxime voluptates nesciunt nulla voluptate. Quidem qui maxime recusandae amet, cumque earum.
+                        Neque, nisi, veniam corporis architecto at dicta beatae voluptate inventore iusto obcaecati sapiente totam nam vitae debitis illo!
+                    </p>
+                    <a href="#"><span>Read More</span></a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="mapContainer" >
+        <h2 class="title">Rejoignez les !</h2>
+        <div id="map">
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin="" defer></script>
+    <script src="{{ asset("js/index.js") }}" defer></script>
 {% endblock %}

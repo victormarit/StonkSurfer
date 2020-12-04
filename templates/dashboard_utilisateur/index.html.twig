@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardUtilisateurController!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-8">
+                <div class="cardUtilisateurFil mt-5">
+                    <h2 > Fil d'actualité</h2>
+                    {% for session in sessions %}
+                        <div class="cardUtilisateurContenu col-sm-12">
+                            <p>Post créé par : {{ session.idUtilisateur.email }}</p>
+                            <p>Le : {{ session.dateSessionDebut|date('d/m/Y H:i') }}</p>
+                            <h4>{{ session.idSpot.Lieu }}</h4>
+                            <h5>{{ session.idSpot.Ville }}</h5>
+                            <p>{{ session.commentaire }}</p>
+                            {{ session.notePerformance }}
+                        </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+
+          <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+
+
+{% endblock %}
